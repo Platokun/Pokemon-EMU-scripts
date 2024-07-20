@@ -22,17 +22,17 @@ console:log("if here are the variables and values i use for the script \n shinyf
 -------------------------------------------------------------------------------------------------------------------------------------
 --known offsets from some rediter Kaus_Raube. NOT TESTED BY ME
 -------------------------------------------------------------------------------------------------------------------------------------
---if rnging for tid, ID/SID, 75 frames (thanks GoldenBanana)
---Kyogre (Sapphire) 654 frames
---Groudon (Ruby) 654 frames
---Rayquaza 2 frames Klaus_Raube
---Regis (all 3) 56 frames
---Beldum 167 frames
---Latias (Southern Island) 404 frames
---Latios (Southern Island) 431 frames
---Kecleon ~145 frames
---Wynaut egg ~167 frames
---Voltorb ~85 frames
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
 -------------------------------------------------------------------------------------------------------------------------------------
 --MY KNOWN RNG OFFSETS
 -------------------------------------------------------------------------------------------------------------------------------------
@@ -47,9 +47,9 @@ console:log("if here are the variables and values i use for the script \n shinyf
 -- ho-oh = 377 
 -- lugia = 275 
 -- deoxis = 500 (note, deoxis can only be cought officially on english carts. if you get flagged for cheating by using deoxis on jp, idk man)
---
---
---
+-- regi-rock = 102
+-- regi-ice = 102
+-- groudon = 287
 --
 ----------------------------------------------------------------------------------------------
 -- mostly original Emerald RNG 2.0 .lua vba variables start here							--
@@ -890,7 +890,7 @@ function pressAforShiny(targetframe)
 			emu:addKey(key_shiny)
 			lastframe = currentframe
 		end
-
+        
 -- release key condition
 
         if key_type == key_type_button  then
@@ -909,7 +909,8 @@ function pressAforShiny(targetframe)
 			target_end_frame = targetframe + direction_held_time
 			if currentframe >= targetframe and currentframe < target_end_frame then
 				buffer:print(string.format("key_type = %d (direction is 1)\n to be released on frame  %d\n", key_type,  key_type, target_end_frame))
-			else
+            end
+            if currentframe == target_end_frame then
 				buffer:print(string.format("key_type = %d (direction is 1)\nreleased on frame  %d\n", key_type,  key_type, target_end_frame))
 				emu:clearKey(key_shiny)
 			end
