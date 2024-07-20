@@ -1334,20 +1334,20 @@ function arekeyspressed(buffer)
 	key_down = emu:getKey(7)
 	key_l = emu:getKey(8)
 	key_r = emu:getKey(9)
-    -- Initialize all the variables used in the string.format
-local key_a = key_a or 0
-local key_b = key_b or 0
-local key_select = key_select or 0
-local key_start = key_start or 0
-local key_right = key_right or 0
-local key_left = key_left or 0
-local key_up = key_up or 0
-local key_down = key_down or 0
-local key_l = key_l or 0
-local key_r = key_r or 0
-local key_shiny = key_shiny or 0
-local key_type_direction = key_type_direction or 0
-local target_end_frame = target_end_frame or 0
+    -- sometimes it doesnt register on start and crashes soooooooooooooooooooooooooooo yeah
+    local key_a = key_a or 0
+    local key_b = key_b or 0
+    local key_select = key_select or 0
+    local key_start = key_start or 0
+    local key_right = key_right or 0
+    local key_left = key_left or 0
+    local key_up = key_up or 0
+    local key_down = key_down or 0
+    local key_l = key_l or 0
+    local key_r = key_r or 0
+    local key_shiny = key_shiny or 0
+    local key_type_direction = key_type_direction or 0
+    local target_end_frame = target_end_frame or 0
     buffer:print(string.format("A: %d, B: %d, SELECT: %d, START: %d \nRIGHT: %d, LEFT: %d \nUP: %d, DOWN: %d \nL: %d, R: %d", key_a, key_b, key_select, key_start, key_right, key_left, key_up, key_down, key_l, key_r))
 end
 
@@ -1384,7 +1384,6 @@ function detectGame()
 			slotBuffer6 = console:createBuffer("Party Slot 6")
 			gameInfoBuffer = console:createBuffer("Game Info")
 			rngInfoBuffer = console:createBuffer("RNG Info")
-			--sidBuffer = console:createBuffer("SID")
 			pressAforShinyBuffer = console:createBuffer("pressingAforShiny")
 			
 			buttonsPressedBuffer = console:createBuffer("buttonsPressed")
@@ -1411,9 +1410,8 @@ function updateBuffer()
 	for slot, buffer in ipairs(buffers) do
         printPartyMember(game, buffer, slot)
     end
-	--remember that target frame is -264 in open area -272 in cave
 
-	--if shinyframe is not nil then pressAforShiny
+	--remember that target frame is -264 in open area -272 in cave
 	arekeyspressed(buttonsPressedBuffer)
 	pressAforShiny(locationOffset)
 	--catchRng(gameInfoBuffer)
